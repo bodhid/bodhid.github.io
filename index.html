@@ -42,8 +42,9 @@
         <img src="media/voxtopolis_logo.png" alt="Voxtopolis Logo" class="logo">
     </div>
     <div class="bottom-logos">
-        <a href="https://discord.gg/KzQVEFnNQb" target="_blank">
+        <a href="https://discord.gg/KzQVEFnNQb" target="_blank" class="discord-button">
             <img src="media/discord.png" alt="Play Now!">
+            <div class="play-here-label">Play Here!</div>
             <div class="tooltip">Join the Discord to Play!</div>
         </a>
         <a href="https://www.youtube.com/channel/UCulwuAbFjMmfMpmp8o2Nfig" target="_blank">
@@ -52,4 +53,32 @@
         </a>
     </div>
 </body>
+<style>
+    .discord-button {
+        position: relative;
+        display: inline-block;
+    }
+
+    .play-here-label {
+        position: absolute;
+        top: 20px;
+        right: 90px;
+        background: rgba(255, 0, 0, 0.8);
+        color: white;
+        padding: 5px 12px;
+        font-size: 32px;
+        font-weight: bold;
+        border-radius: 5px;
+        transform: rotate(-30deg);
+        pointer-events: none;
+        white-space: nowrap;
+        animation: pulse 0.5s infinite ease-in-out;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: rotate(-30deg) scale(1); }
+        50% { transform: rotate(-30deg) scale(1.2); }
+    }
+</style>
 </html>
