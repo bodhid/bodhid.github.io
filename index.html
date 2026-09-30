@@ -24,9 +24,13 @@
         @keyframes zoomPan { 0%, 100% { transform: scale(1) translate(0, 0); } 25% { transform: scale(1.1) translate(10px, -10px); } 50% { transform: scale(1.2) translate(-10px, 10px); } 75% { transform: scale(1.1) translate(-10px, -10px); } }
         .logo-container { display: flex; justify-content: center; padding-top: 20px; z-index: 1; }
         .logo { height: 20vh; max-width: 90vw; object-fit: contain; }
-        .bottom-logos { display: flex; justify-content: center; position: absolute; bottom: 20px; width: 100%; z-index: 1; }
-        .bottom-logos img { height: 20vh; margin: 0 10px; cursor: pointer; transition: transform 0.3s; }
+        .bottom-logos { display: flex; justify-content: center; align-items: center; position: absolute; bottom: 20px; width: 100%; z-index: 1; }
+        .bottom-logos a { position: relative; }
+        .bottom-logos img { display: block; height: 20vh; margin: 0 10px; cursor: pointer; transition: transform 0.3s; }
         .bottom-logos img:hover { transform: scale(1.3); }
+        .bottom-logos .steam-button img:hover { transform: scale(1.15); }
+        .bottom-logos .small img { height: 10vh; }
+        .bottom-logos .small .caption { bottom: 12.5vh; }
         .tooltip, .caption { position: absolute; bottom: 25vh; background: rgba(0, 0, 0, .69); color: white; padding: 5px 10px; border-radius: 5px; opacity: 0; transition: opacity 0.3s; font-size: 32px; text-align: center; }
         .bottom-logos a:hover .tooltip, .bottom-logos a:hover .caption { opacity: 1; }
         .caption { transform: translateX(-50%); left: 50%; }
@@ -42,33 +46,37 @@
         <img src="media/voxtopolis_logo.png" alt="Voxtopolis Logo" class="logo">
     </div>
     <div class="bottom-logos">
-        <a href="https://discord.gg/KzQVEFnNQb" target="_blank" class="discord-button">
-            <img src="media/discord.png" alt="Play Now!">
-            <div class="play-here-label">Play Here!</div>
-            <div class="tooltip">Join the Discord to Play!</div>
+        <a href="https://store.steampowered.com/app/4112670/VOXTOPOLIS/" target="_blank" class="steam-button">
+            <img src="media/steam.png" alt="Wishlist on Steam!">
+            <div class="play-here-label">Wishlist Now!</div>
+            <div class="caption">Wishlist on Steam!</div>
         </a>
-        <a href="https://www.youtube.com/channel/UCulwuAbFjMmfMpmp8o2Nfig" target="_blank">
+        <a href="https://www.youtube.com/channel/UCulwuAbFjMmfMpmp8o2Nfig" target="_blank" class="small">
             <img src="media/youtube.png" alt="Watch Updates!">
             <div class="caption">Watch the latest updates!</div>
+        </a>
+        <a href="https://discord.gg/KzQVEFnNQb" target="_blank" class="small">
+            <img src="media/discord.png" alt="Join the community!">
+            <div class="caption">Join the community!</div>
         </a>
     </div>
 </body>
 <style>
-    .discord-button {
+    .steam-button {
         position: relative;
         display: inline-block;
     }
 
     .play-here-label {
         position: absolute;
-        top: 20px;
-        right: 90px;
+        top: 20%;
+        right: 60%;
         background: rgba(255, 0, 0, 0.8);
         color: white;
-        padding: 5px 12px;
-        font-size: 32px;
+        padding: 0.3vh 0.8vh;
+        font-size: 4.2vh;
         font-weight: bold;
-        border-radius: 5px;
+        border-radius: 0.3vh;
         transform: rotate(-30deg);
         pointer-events: none;
         white-space: nowrap;
