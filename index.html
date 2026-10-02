@@ -40,6 +40,8 @@
         .tooltip, .caption { position: absolute; bottom: 25vh; background: rgba(0, 0, 0, .69); color: white; padding: 5px 10px; border-radius: 5px; opacity: 0; transition: opacity 0.3s; font-size: 32px; text-align: center; }
         .bottom-logos a:hover .tooltip, .bottom-logos a:hover .caption { opacity: 1; }
         .caption { transform: translateX(-50%); left: 50%; }
+        .steam-widget { position: absolute; left: 0; bottom: 10px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; z-index: 1; }
+        .steam-widget iframe { flex: none; border: 0; transform-origin: center; }
     </style>
 </head>
 <body>
@@ -50,6 +52,9 @@
     </div>
     <div class="logo-container">
         <img src="media/voxtopolis_logo.png" alt="Voxtopolis Logo" class="logo">
+    </div>
+    <div class="steam-widget">
+        <iframe src="https://store.steampowered.com/widget/4112670/" frameborder="0" width="646" height="190" title="VOXTOPOLIS on Steam"></iframe>
     </div>
     <div class="bottom-logos">
         <a href="https://store.steampowered.com/app/4112670/VOXTOPOLIS/" target="_blank" class="steam-button">
@@ -66,6 +71,23 @@
             <div class="caption">Join the community!</div>
         </a>
     </div>
+    <script>
+        // Pin the fixed-size Steam widget to the bottom, scaled to fit, and stack the buttons above it
+        (function () {
+            var logo = document.querySelector('.logo'), buttons = document.querySelector('.bottom-logos');
+            var box = document.querySelector('.steam-widget'), frame = box.querySelector('iframe');
+            function fit() {
+                var free = window.innerHeight - logo.getBoundingClientRect().bottom - buttons.offsetHeight - 40;
+                var s = Math.max(0, Math.min(1, (window.innerWidth - 32) / 646, free / 190));
+                box.style.height = 190 * s + 'px';
+                frame.style.transform = 'scale(' + s + ')';
+                buttons.style.bottom = 10 + 190 * s + 10 + 'px';
+            }
+            window.addEventListener('resize', fit);
+            window.addEventListener('load', fit);
+            fit();
+        })();
+    </script>
 </body>
 <style>
     .steam-button {
